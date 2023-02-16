@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private InputAction _moveInput = null;
+
+    private void OnEnable()
     {
-        
+        _moveInput.Enable();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        _moveInput.Disable();
+    }
+
+    public float MoveInput()
+    {
+        return _moveInput.ReadValue<float>();
     }
 }
