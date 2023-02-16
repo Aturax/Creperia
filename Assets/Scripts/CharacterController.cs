@@ -22,6 +22,6 @@ public class CharacterController : MonoBehaviour
     {
         float input = _inputController.MoveInput();
 
-        transform.position += transform.forward * input * _speed * Time.deltaTime;
+        transform.position += transform.right * input * _speed * Time.deltaTime;
     }
 }
