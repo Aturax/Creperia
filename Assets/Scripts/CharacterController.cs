@@ -9,11 +9,12 @@ public class CharacterController : MonoBehaviour
     private InputController _inputController = null;
     private void Awake()
     {
+       
         _inputController = GetComponent<InputController>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         Move();
     }
@@ -23,5 +24,6 @@ public class CharacterController : MonoBehaviour
         float input = _inputController.MoveInput();
 
         transform.position += transform.right * input * _speed * Time.deltaTime;
+
     }
 }
