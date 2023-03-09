@@ -7,9 +7,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float _speed = 0f;
 
     [SerializeField] private float _horizontalRange = 0f;
+    public InputController _inputController = null;
 
-
-    private InputController _inputController = null;
+  
     private void Awake()
     {
        
@@ -24,17 +24,20 @@ public class CharacterController : MonoBehaviour
 
     void Move() 
     {
-        float input = _inputController.MoveInput();
+        float inputHorizontal = _inputController.MoveHorizontalInput();
 
-       // transform.position += transform.right * input * _speed * Time.deltaTime;
+        float inputVertical = _inputController.MoveVerticalInput();
 
         // Move the player horizontally
-        float newPosition = transform.position.x + (input * _speed * Time.deltaTime);
+        float newPositionX = transform.position.x + (inputHorizontal * _speed * Time.deltaTime);
 
         // Clamp the horizontal position to the allowed range
-        newPosition = Mathf.Clamp(newPosition, -_horizontalRange, _horizontalRange);
+        newPositionX = Mathf.Clamp(newPositionX, -_horizontalRange, _horizontalRange);
 
-        transform.position = new Vector3(newPosition, transform.position.y, transform.position.z);
+        // Move the player vertically
+        float newPositionZ = transform.position.z + (inputVertical * -_speed * Time.deltaTime);
+
+        transform.position = new Vector3(newPositionX, transform.position.y, newPositionZ);
 
     }
 }
