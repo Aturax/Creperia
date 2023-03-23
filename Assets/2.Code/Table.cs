@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class Table : MonoBehaviour
 {
-    public Vector3 position;
-    public Vector3 size;
+    [SerializeField]public int id = 1;
+    [SerializeField] private string pedido = "Crep";
     public bool isBeingServed;
-
     public void Serve()
     {
         isBeingServed = true;
