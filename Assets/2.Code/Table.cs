@@ -2,19 +2,14 @@ using UnityEngine;
 
 public class Table : MonoBehaviour
 {
-    [SerializeField]public int id = 1;
-    [SerializeField] private string pedido = "Crep";
-    public bool isBeingServed;
-    public void Serve()
-    {
-        isBeingServed = true;
-        Debug.Log("Serving table");
-    }
+    [SerializeField] private int _id = 1;
+    [SerializeField] private Dish _dish = null;
+    private bool _isBeingServed;
 
-    public void StopServing()
+    public int ID { get { return _id; } }
+    public bool IsBeingServed
     {
-        isBeingServed = false;
-        Debug.Log("Stopped serving ");
+        get { return _isBeingServed; }
+        set { _isBeingServed = value; }
     }
 }
-

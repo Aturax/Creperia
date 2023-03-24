@@ -31,9 +31,8 @@ public class InputController : MonoBehaviour
         return _moveVerticalInput.ReadValue<float>();
     }
 
-    public float ActionInput() 
+    public bool ActionInput() 
     {
-
-        return _actionInput.ReadValue<float>();
+        return _actionInput.ReadValue<float>() > 0;
     }
 }
