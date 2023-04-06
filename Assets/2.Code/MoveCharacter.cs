@@ -4,6 +4,7 @@ public class MoveCharacter : MonoBehaviour
 {
     [SerializeField] private float _speed = 0f;
     [SerializeField] private float _horizontalRange = 0f;
+    [SerializeField] private float _verticalRange = 0f;
     private InputController _inputController = null;
 
     private bool _isEnabled = true;
@@ -32,7 +33,7 @@ public class MoveCharacter : MonoBehaviour
         Vector3 position = Vector3.zero;
         position.x = Mathf.Clamp(transform.position.x, -_horizontalRange, _horizontalRange);
         position.y = transform.position.y;
-        position.z = transform.position.z;
+        position.z = Mathf.Clamp(_verticalRange, -_verticalRange, transform.position.z);
 
         transform.position = position;
 
